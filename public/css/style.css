@@ -1,0 +1,179 @@
+:root {
+    --primary: #2c3e50; /* Azul Petróleo Profissional */
+    --secondary: #34495e; /* Versão mais clara do primário */
+    --success: #27ae60; /* Verde "Compra" */
+    --danger: #e74c3c; /* Vermelho "Venda/Excluir" */
+    --danger-dark: #c0392b; /* Vermelho mais escuro para hover */
+    --light: #ecf0f1; /* Fundo cinza claro */
+    --dark: #bdc3c7; /* Bordas e textos secundários */
+    --radius: 12px; /* Padrão de arredondamento */
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--light);
+    color: var(--primary);
+    margin: 0;
+    padding: 20px;
+}
+
+/* --- Container Principal --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Sombra suave e moderna */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--secondary);
+}
+
+/* --- Alertas (Flash Messages) --- */
+.alert {
+    padding: 15px;
+    border-radius: var(--radius);
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+.alert-error {
+    background: #fadbd8;
+    color: #76443b;
+    border: 1px solid #f5c6cb;
+}
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* --- Formulário Empilhado e Arredondado --- */
+.form-stack {
+    display: flex;
+    flex-direction: column; /* Aqui está o segredo para empilhar */
+    gap: 15px; /* Espaço entre os campos */
+    max-width: 600px; /* Limita a largura para não ficar "esticadão" */
+    margin: 0 auto 40px auto; /* Centraliza o formulário */
+}
+
+input,
+button {
+    padding: 14px 16px; /* Mais espaço interno para facilitar o clique/toque */
+    border-radius: var(--radius);
+    border: 2px solid var(--light); /* Borda sutil */
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Suaviza animações de hover */
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary); /* Destaca o campo ao clicar */
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+/* Grid específico para os 5 anos de dividendos */
+.dividend-grid {
+    display: grid;
+    /* O segredo: "auto-fit" preenche o espaço e "minmax" define o tamanho mínimo seguro */
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+/* Garante que os inputs não estourem o container */
+.dividend-grid input {
+    width: 100%;
+    box-sizing: border-box; /* Essencial para o padding não aumentar o tamanho do input */
+}
+/* Em celulares, quebra o grid de dividendos para não espremer */
+@media (max-width: 600px) {
+    .dividend-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Botão Principal (Calcular) */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+/* --- Botão de Excluir (Transformando o link) --- */
+.btn-delete {
+    display: inline-block; /* Necessário para aceitar padding */
+    padding: 8px 12px;
+    background-color: var(--danger);
+    color: white !important; /* Força a cor branca */
+    text-decoration: none; /* Remove o sublinhado feio */
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.btn-delete:hover {
+    background-color: var(--danger-dark);
+}
+
+/* --- Tabela Responsiva e Arredondada --- */
+/* O segredo da responsividade é este container em volta da tabela */
+.table-responsive {
+    overflow-x: auto; /* Se não couber, cria barra de rolagem horizontal */
+    border-radius: var(--radius);
+    border: 1px solid var(--light);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap; /* Evita quebra de linha em telas pequenas */
+}
+th {
+    background: #f8f9fa;
+    font-weight: 700;
+    color: var(--secondary);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+th,
+td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--light);
+}
+tr:last-child td {
+    border-bottom: none;
+} /* Remove borda da última linha */
+tr:hover {
+    background: #f1f2f6; /* Realce ao passar o mouse na linha */
+}
+
+/* Badges de Status */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.badge-compra {
+    background: #d4edda;
+    color: var(--success);
+}
+.badge-caro {
+    background: #fadbd8;
+    color: var(--danger);
+}

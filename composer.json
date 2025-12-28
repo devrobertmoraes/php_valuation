@@ -1,0 +1,17 @@
+{
+    "name": "robert/php_valuation",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert Moraes",
+            "email": "robertmoraes13r@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
